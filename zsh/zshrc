@@ -1,2 +1,6 @@
+# .envcfg/zsh/zshrc (linked from ~/.zshrc)
+
+export CLICOLOR=1
+
 alias vi="nvim"
 alias vim="nvim"
