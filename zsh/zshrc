@@ -1,6 +1,8 @@
 # .envcfg/zsh/zshrc (linked from ~/.zshrc)
 
 export CLICOLOR=1
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
 
 alias vi="nvim"
 alias vim="nvim"
