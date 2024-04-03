@@ -7,6 +7,8 @@ export HISTSIZE=10000
 alias vi="nvim"
 alias vim="nvim"
 
+if [ -f ~/.zshrc_work ] ; then source ~/.zshrc_work; fi
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Applications/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
