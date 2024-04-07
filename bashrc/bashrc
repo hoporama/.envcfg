@@ -1,0 +1,111 @@
+# .bashrc
+
+# Uncomment for debugging
+#set -o xtrace
+
+# Source global definitions
+#-if [ -f /etc/bashrc ]; then source /etc/bashrc ; fi
+
+#
+# XDG - https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+#
+#-export XDG_DATA_HOME=~/.local/share
+#-export XDG_CONFIG_HOME=~/.config
+
+#
+# Git
+#
+if [ -f ~/lib/git/git-completion.bash ]; then
+	source ~/lib/git/git-completion.bash
+fi
+
+if [ -f ~/lib/git/git-prompt.sh ]; then
+	source ~/lib/git/git-prompt.sh
+fi
+
+#
+# General environment
+#
+
+EDITOR=vi
+export EDITOR
+PAGER=less
+export PAGER
+FIGNORE=".svn:.git"
+export FIGNORE # pathname completion ignore
+
+#
+# Utility functions
+#
+
+findinfile() {
+    if [ "$#" == 1 ]; then
+        dir="$PWD"
+    else
+        dir="$2"
+    fi
+    find "$dir" -path ./.svn -prune -o -type f -exec grep "$1" {} /dev/null \;
+}
+
+#
+# Aliases
+#
+if [ `uname` = 'Darwin' ]
+then
+    alias ls='ls -G'
+else
+    alias ls='ls --color'
+fi
+
+# if Neovim is installed locally use it...
+if [ -x /usr/bin/nvim ]; then
+    alias vi='nvim'
+    alias vim='nvim'
+    alias view='nvim -R'
+fi
+
+# if Neovim appimage is available use it...
+if [ -x ~/bin/nvim.appimage ]; then
+    alias nvim='nvim.appimage'
+    alias vi='nvim.appimage'
+    alias vim='nvim.appimage'
+    alias view='nvim.appimage -R'
+fi
+
+if [ -x ~/bin/tmux.appimage ]; then
+    alias tmux='tmux.appimage'
+fi
+
+alias enscript1colport='enscript --portrait --columns=1 --highlight --fancy-header=emacs'
+alias enscript1colland='enscript --landscape --columns=1 --highlight --fancy-header=emacs'
+alias enscript2colport='enscript --portrait--columns=2 --highlight --fancy-header=emacs'
+alias enscript2colland='enscript --landscape --columns=2 --highlight --fancy-header=emacs'
+alias fif='findinfile'
+alias gitrev='git rev-list --count --first-parent HEAD'
+alias gnome-debug='export GNOME_PANEL_DEBUG=1;export GCONF_DEBUG_OUTPUT=1; export GSM_VERBOSE_DEBUG=1'
+alias grepi='grep -i'
+alias hi=history
+alias la='ls -a'
+alias lf='ls -F'
+alias ll='ls -l'
+alias lr='ls -R'
+alias lt='ls --format=long --sort=time --time=atime'
+alias libre='libreoffice'
+alias my2to3='2to3-3.6 -w -v'
+alias myautopep8='autopep8 --in-place -a -a -v'
+alias myblack27='black --target-version py27'
+alias myblack='black --target-version py36'
+alias pager='vim -R'
+alias po=popd
+alias pu=pushd
+alias ssu='ssh localhost -XY -l'
+alias svnpropset='svn propset '\''svn:keywords'\'' '\''Author Date Id Revision URL copyright license'\'''
+alias t='task'
+alias tl='task long'
+alias tn='task next'
+alias taskh='task help | less'
+alias taskl='task long'
+alias taskn='task next'
+alias taskdone='task end.after:today completed'
+alias taskmit='task +mit'
+

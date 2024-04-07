@@ -9,6 +9,8 @@ alias vim="nvim"
 
 if [ -f ~/.zshrc_work ] ; then source ~/.zshrc_work; fi
 
+export PATH=/opt/homebrew/bin:$PATH
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Applications/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
